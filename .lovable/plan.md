@@ -1,11 +1,10 @@
 
 
-## Ändra sidtitel till "Välkommen Hem"
+## Remove Footer Links (Integritetspolicy & Villkor)
 
-### Ändring: `index.html`
+Remove the "Integritetspolicy" and "Villkor" links from the Footer component, keeping only the copyright text.
 
-Uppdatera `<title>` och `og:title` meta-taggen från "Lovable App" till "Välkommen Hem". Ta bort TODO-kommentaren.
-
-- Rad 6-7: Ta bort TODO-kommentaren, ändra `<title>` till `Välkommen Hem`
-- Rad 13: Ändra `og:title` till `Välkommen Hem`
+### Change: `src/components/Footer.tsx`
+- Remove the `<div>` containing the two links
+- Simplify the container layout since only one element remains
 
