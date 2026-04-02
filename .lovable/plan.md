@@ -1,17 +1,17 @@
 
 
-## Ta bort all Lovable-innehåll från index.html
+## Generera och sätt favicon
 
-### Ändring: `index.html`
+Sidan heter "Välkommen Hem" — jag genererar en enkel, stilren favicon (ett litet hus-ikon i SVG-format) och lägger den i `public/`.
 
-Uppdatera eller ta bort alla meta-taggar som refererar till Lovable:
+### Steg 1: Skapa favicon
+Generera en enkel SVG-favicon med ett hus-motiv i projektets primärfärg. Spara som `public/favicon.svg`.
 
-- **Rad 7**: Ändra `meta description` från "Lovable Generated Project" till en relevant beskrivning, t.ex. "Välkommen Hem"
-- **Rad 8**: Ta bort `<meta name="author" content="Lovable" />` helt
-- **Rad 11**: Ändra `og:description` från "Lovable Generated Project" till "Välkommen Hem"
-- **Rad 13**: Ta bort `og:image` som pekar på `lovable.dev`
-- **Rad 16**: Ta bort `twitter:site` med `@Lovable`
-- **Rad 17**: Ta bort `twitter:image` som pekar på `lovable.dev`
+### Steg 2: Uppdatera `index.html`
+Lägg till en `<link rel="icon">` som pekar på `/favicon.svg`. Ta bort eventuell befintlig favicon-referens.
 
-Inga andra filer påverkas. Ingen påverkan på routing eller deploy.
+### Tekniska detaljer
+- Favicon skapas som SVG (skalbart, litet, modernt)
+- En `<link rel="icon" href="/favicon.svg" type="image/svg+xml">` läggs till i `<head>`
+- Ta bort `public/favicon.ico` om den finns, för att undvika att webbläsaren laddar den istället
 
