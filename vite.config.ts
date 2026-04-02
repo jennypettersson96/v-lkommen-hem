@@ -3,7 +3,11 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const githubPagesBase = repositoryName && !repositoryName.endsWith(".github.io")
+  ? `/${repositoryName}/`
+  : "/";
+
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -12,7 +16,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  base: process.env.GITHUB_PAGES ? "/v-lkommen-hem/" : "/",
+  base: process.env.GITHUB_PAGES ? githubPagesBase : "/",
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
