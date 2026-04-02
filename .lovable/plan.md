@@ -1,25 +1,21 @@
 
-## Website Layout Plan (Swedish, Single Page with Smooth Scroll)
 
-### Overview
-A clean, responsive single-page website layout in Swedish with smooth-scroll navigation. All sections will have placeholder structure — no real content, just clearly marked areas for future content.
+## Fix: Preview slutar fungera pga `base`-path
 
-### Sections & Components
+### Problem
+`vite.config.ts` har `base: "/v-lkommen-hem/"` hårdkodat. Detta gör att dev-servern (Lovable preview) försöker ladda assets från `/v-lkommen-hem/` istället för `/`, vilket ger en tom sida.
 
-1. **Navbar** — Sticky top navigation with logo placeholder and smooth-scroll links: "Om oss", "Tjänster", "Kontakt". Hamburger menu on mobile.
+### Lösning
+Sätt `base` villkorligt — bara i production-bygget:
 
-2. **Hero Section** — Full-width hero with placeholder heading and subheading text areas. No images. Simple background color or gradient.
+**vite.config.ts** — ändra rad 8:
+```ts
+base: mode === "production" ? "/v-lkommen-hem/" : "/",
+```
 
-3. **Om oss (About)** — Section with placeholder text areas (heading + paragraph blocks).
+Detta gör att:
+- **Preview (development)**: `base = "/"` → fungerar som vanligt
+- **GitHub Pages build (production)**: `base = "/v-lkommen-hem/"` → assets laddas korrekt på subpathen
 
-4. **Tjänster (Services)** — Section with a grid layout (e.g. 3 cards) for describing offerings, each with placeholder title and description areas.
+En enda rad ändras, inget annat påverkas.
 
-5. **Kontakt (Contact)** — Section with clearly marked placeholders for e-mail, phone number, and address.
-
-6. **Footer** — Simple footer with placeholder links and copyright text.
-
-### Design
-- Clean, minimal layout using Tailwind
-- Responsive: mobile hamburger menu, stacked sections on small screens, side-by-side on larger
-- All text in Swedish
-- Smooth scroll behavior via CSS `scroll-behavior: smooth` and anchor links
