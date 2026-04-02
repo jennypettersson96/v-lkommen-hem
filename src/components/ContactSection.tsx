@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const ContactSection = () => (
   <section id="kontakt" className="py-20 scroll-mt-16">
-    <div className="container max-w-4xl">
+    <div className="container">
       <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Kontakt</h2>
       <div className="mt-10 grid gap-8 sm:grid-cols-3">
         <div className="flex flex-col items-center gap-3 text-center">
