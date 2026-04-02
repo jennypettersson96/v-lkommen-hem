@@ -1,17 +1,18 @@
 
+## Fixa vertikal alignment mellan sektionerna
 
-## Generera och sätt favicon
+Problemet: "Om oss" och "Kontakt" har `container max-w-4xl` vilket gör dem smalare än "Tjänster" som bara har `container`. Rubrikerna startar på olika x-positioner.
 
-Sidan heter "Välkommen Hem" — jag genererar en enkel, stilren favicon (ett litet hus-ikon i SVG-format) och lägger den i `public/`.
+### Lösning: Ge alla sektioner samma container-bredd
 
-### Steg 1: Skapa favicon
-Generera en enkel SVG-favicon med ett hus-motiv i projektets primärfärg. Spara som `public/favicon.svg`.
+Ändra "Om oss" och "Kontakt" från `container max-w-4xl` till `container`, så att alla tre sektioner delar samma vänsterkant.
 
-### Steg 2: Uppdatera `index.html`
-Lägg till en `<link rel="icon">` som pekar på `/favicon.svg`. Ta bort eventuell befintlig favicon-referens.
+### Ändringar
 
-### Tekniska detaljer
-- Favicon skapas som SVG (skalbart, litet, modernt)
-- En `<link rel="icon" href="/favicon.svg" type="image/svg+xml">` läggs till i `<head>`
-- Ta bort `public/favicon.ico` om den finns, för att undvika att webbläsaren laddar den istället
+**`src/components/AboutSection.tsx`** (rad 3)
+- Ändra `className="container max-w-4xl"` till `className="container"`
 
+**`src/components/ContactSection.tsx`** (rad 5)
+- Ändra `className="container max-w-4xl"` till `className="container"`
+
+Innehållet i "Om oss" och "Kontakt" får fortfarande sin naturliga bredd via texten och grid-layouten, men rubrikerna alignas med "Tjänster".
