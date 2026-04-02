@@ -1,11 +1,24 @@
 
 
-## Ändra sidtitel till "Välkommen Hem"
+## Förbättra UI för Tjänster- och Kontakt-sektionerna
 
-### Ändring: `index.html`
+Baserat på skärmbilden ser layouten lite "platt" och utspridd ut. Här är förbättringar:
 
-Uppdatera `<title>` och `og:title` meta-taggen från "Lovable App" till "Välkommen Hem". Ta bort TODO-kommentaren.
+### 1. ServicesSection — bättre kort-design
+- Centrera sektionsrubriken
+- Lägg till hover-effekt på korten (skugga + liten transform)
+- Ge korten mer padding och en subtil border-färg
+- Lägg till en ikon-placeholder (eller färgad prick) ovanför titeln för visuell variation
 
-- Rad 6-7: Ta bort TODO-kommentaren, ändra `<title>` till `Välkommen Hem`
-- Rad 13: Ändra `og:title` till `Välkommen Hem`
+### 2. ContactSection — tightare layout
+- Centrera rubriken
+- Lägg till bakgrundscirklar/runda ikoner bakom ikonerna för bättre visuell balans
+- Förbättra spacing mellan elementen
+- Gör kontaktuppgifterna klickbara (mailto, tel)
+
+### Filer som ändras
+- `src/components/ServicesSection.tsx` — centrera rubrik, hover-effekter på kort
+- `src/components/ContactSection.tsx` — centrera rubrik, runda ikon-bakgrunder, klickbara kontaktlänkar
+
+Inga nya filer, komponenter eller konfigurationsändringar. Inga ändringar som påverkar routing eller GitHub Pages.
 
