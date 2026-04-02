@@ -3,10 +3,15 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Om oss", href: "#om-oss" },
-  { label: "Tjänster", href: "#tjanster" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Om oss", id: "om-oss" },
+  { label: "Tjänster", id: "tjanster" },
+  { label: "Kontakt", id: "kontakt" },
 ];
+
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,10 +26,11 @@ const Navbar = () => {
         {/* Desktop */}
         <ul className="hidden gap-8 md:flex">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.id}>
               <a
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                href={`#${link.id}`}
+                onClick={(e) => { e.preventDefault(); scrollTo(link.id); }}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 {link.label}
               </a>
@@ -51,11 +57,11 @@ const Navbar = () => {
       >
         <ul className="flex flex-col gap-4 px-6 pb-6">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.id}>
               <a
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                href={`#${link.id}`}
+                onClick={(e) => { e.preventDefault(); setMobileOpen(false); scrollTo(link.id); }}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 {link.label}
               </a>
